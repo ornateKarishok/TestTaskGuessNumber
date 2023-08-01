@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainActivity">
 
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.testtaskguessnumber.MainActivity"
+        android:label="MainActivity">
+        <action
+            android:id="@+id/gameActivity"
+            app:destination="@id/gameActivity" />
+    </activity>
+    <activity
+        android:id="@+id/gameActivity"
+        android:name="com.example.testtaskguessnumber.GameActivity"
+        android:label="GameActivity">
+        <action
+            android:id="@+id/resultActivity"
+            app:destination="@id/resultActivity" />
+    </activity>
+    <activity
+        android:id="@+id/resultActivity"
+        android:name="com.example.testtaskguessnumber.ResultActivity"
+        android:label="ResultActivity" />
 </navigation>
