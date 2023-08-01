@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestTaskGuessNumber</string>
+    <string name="start_game">Start game</string>
+    <string name="exit_the_application">Exit the application</string>
+    <string name="check">Check</string>
+    <string name="number_of_guessed_numbers_title">The number of guessed numbers</string>
+    <string name="number_of_unguessed_numbers_title">Number of unguessed numbers</string>
+    <string name="go_to_main_menu">Go to main menu</string>
 </resources>

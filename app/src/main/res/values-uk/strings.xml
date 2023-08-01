@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TestTaskGuessNumber</string>
+    <string name="start_game">Почати гру </string>
+    <string name="exit_the_application">Вийти з додатку</string>
+    <string name="check">Перевірити</string>
+    <string name="number_of_guessed_numbers_title">Кількість вгаданих чисел</string>
+    <string name="number_of_unguessed_numbers_title">Кількість не вгаданних чисел</string>
+    <string name="go_to_main_menu">Повернутися до меню</string>
+</resources>
