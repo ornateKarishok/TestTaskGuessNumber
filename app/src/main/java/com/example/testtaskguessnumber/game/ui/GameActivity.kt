@@ -6,12 +6,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
-import com.example.testtaskguessnumber.result.ui.ResultActivity
 import com.example.testtaskguessnumber.databinding.ActivityGameBinding
 import com.example.testtaskguessnumber.game.viewmodel.GameViewModel
+import com.example.testtaskguessnumber.result.ui.ResultActivity
 import com.example.testtaskguessnumber.util.ValidationUtil
 
 class GameActivity : AppCompatActivity() {
+    val INTENT_KEY = "Game result"
     private lateinit var binding: ActivityGameBinding
     private var vmGame: GameViewModel = GameViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +31,7 @@ class GameActivity : AppCompatActivity() {
             if (ResultActivity::class.java == navigate) {
                 if (ValidationUtil.checkValidity(vmGame.getNumber().inputNumber)) {
                     val nextActivity = Intent(this, navigate)
+                    nextActivity.putExtra(INTENT_KEY, vmGame.getGameScore())
                     startActivity(nextActivity)
 
                     finish()
@@ -41,6 +43,12 @@ class GameActivity : AppCompatActivity() {
                     ).show()
                 }
 
+            } else {
+                Toast.makeText(
+                    this,
+                    resources.getString(R.string.incorrect) + (3 - vmGame.getTerms()),
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
