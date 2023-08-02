@@ -7,4 +7,10 @@
     <string name="number_of_guessed_numbers_title">Кількість вгаданих чисел</string>
     <string name="number_of_unguessed_numbers_title">Кількість не вгаданних чисел</string>
     <string name="go_to_main_menu">Повернутися до меню</string>
+    <string name="please_click_exit_again">Натисніть кнопку ще раз, щоб вийти</string>
+    <string name="game_rules">Будь ласка, вгадайте число від 1 до 100</string>
+    <string name="not_valid_input">Будь ласка, введіть число від 1 до 100</string>
+    <string name="menu">Меню</string>
+    <string name="simple_game">Проста гра</string>
+    <string name="game_results">Результати гри</string>
 </resources>

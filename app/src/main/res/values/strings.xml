@@ -6,4 +6,10 @@
     <string name="number_of_guessed_numbers_title">The number of guessed numbers</string>
     <string name="number_of_unguessed_numbers_title">Number of unguessed numbers</string>
     <string name="go_to_main_menu">Go to main menu</string>
+    <string name="please_click_exit_again">Please click button again to exit</string>
+    <string name="game_rules">Please guess the number from 1 to 100</string>
+    <string name="not_valid_input">Please input number from 1 to 100</string>
+    <string name="menu">Menu</string>
+    <string name="simple_game">Simple game</string>
+    <string name="game_results">Game results</string>
 </resources>

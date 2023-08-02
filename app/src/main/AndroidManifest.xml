@@ -12,7 +12,7 @@
         android:theme="@style/Theme.TestTaskGuessNumber"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".menu.ui.MenuActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".game.ui.GameActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name=".result.ui.ResultActivity"
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
