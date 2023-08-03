@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.testtaskguessnumber.game.`object`.GameScore
-import com.example.testtaskguessnumber.game.ui.GameActivity
 import com.example.testtaskguessnumber.menu.ui.MenuActivity
 import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
-class ResultViewModel(private val gameScore: GameScore?, context: Context) : ViewModel() {
+class ResultViewModel(private val gameScore: GameScore?, private val guessedNumber: Int, context: Context) :
+    ViewModel() {
 
     private var eventNavigate = MutableLiveData<Class<*>>()
     private val sharedPreferencesUtil = SharedPreferencesUtil(context)
@@ -30,6 +30,13 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
                 super.set(value)
             }
         }
+    private var dataBindingThoughtNumber =
+
+        object : ObservableField<String>(guessedNumber.toString()) {
+            override fun set(value: String?) {
+                super.set(value)
+            }
+        }
 
     fun onButtonClick() {
         eventNavigate.value = MenuActivity::class.java
@@ -37,6 +44,9 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
 
     fun getGameScore(): GameScore? {
         return gameScore
+    }
+    fun getDataBindingThoughtNumber(): ObservableField<String> {
+        return dataBindingThoughtNumber
     }
 
     fun getLostGameScore(): ObservableField<String> {
@@ -46,6 +56,7 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
     fun getWonGameScore(): ObservableField<String> {
         return dataBindingWonGameScore
     }
+
     fun getEventNavigate(): LiveData<Class<*>?> {
         return eventNavigate
     }

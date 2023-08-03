@@ -41,6 +41,9 @@ class GameViewModel : ViewModel() {
     fun getTerms(): Int {
         return terms
     }
+    fun getNumbers(): Numbers {
+        return number
+    }
 
     fun getGameScore(): GameScore {
         return gameScore

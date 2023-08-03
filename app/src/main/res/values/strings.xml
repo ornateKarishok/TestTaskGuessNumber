@@ -15,4 +15,5 @@
     <string name="incorrect">Didn\'t guess! Remaining attempts:&#160;</string>
     <string name="you_won">You won!</string>
     <string name="you_lost">You lost :(</string>
+    <string name="the_hidden_number_was">The hidden number was:&#160;</string>
 </resources>
