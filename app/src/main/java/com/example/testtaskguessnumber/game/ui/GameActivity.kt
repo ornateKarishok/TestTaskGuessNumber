@@ -13,8 +13,8 @@ import com.example.testtaskguessnumber.result.ui.ResultActivity
 import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
 class GameActivity : AppCompatActivity() {
-    private val INTENT_KEY_GAME_RESULT = "Game result"
-    private val INTENT_KEY_GUESSED_NUMBER = "Guessed number"
+    private val intentKeyGameResult = "Game result"
+    private val intentKeyThoughtNumber = "Thought number"
     private lateinit var binding: ActivityGameBinding
     private var vmGame: GameViewModel = GameViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +33,8 @@ class GameActivity : AppCompatActivity() {
             if (ResultActivity::class.java == navigate) {
                 saveGameScore()
                 val nextActivity = Intent(this, navigate)
-                nextActivity.putExtra(INTENT_KEY_GAME_RESULT, vmGame.getGameScore())
-                nextActivity.putExtra(INTENT_KEY_GUESSED_NUMBER, vmGame.getNumbers().thoughtNumber)
+                nextActivity.putExtra(intentKeyGameResult, vmGame.getGameScore())
+                nextActivity.putExtra(intentKeyThoughtNumber, vmGame.getNumbers().thoughtNumber)
                 startActivity(nextActivity)
 
                 finish()
