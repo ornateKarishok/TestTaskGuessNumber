@@ -9,6 +9,7 @@ import com.example.testtaskguessnumber.databinding.ActivityResultBinding
 import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.menu.ui.MenuActivity
 import com.example.testtaskguessnumber.result.viewmodel.ResultViewModel
+import com.example.testtaskguessnumber.util.SerializableUtil.Factory.getSerializable
 
 class ResultActivity : AppCompatActivity() {
     private val intentKeyGameResult = "Game result"
@@ -20,15 +21,17 @@ class ResultActivity : AppCompatActivity() {
 
         supportActionBar?.title = resources.getString(R.string.game_results)
 
-        val resultGame: GameScore? =
-            intent.getSerializableExtra(intentKeyGameResult) as GameScore?
+        val resultGame: GameScore =
+            getSerializable(this, intentKeyGameResult, GameScore::class.java)
         val thoughtNumber = intent.getIntExtra(intentKeyThoughtNumber, 0)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result)
         vmResult = ResultViewModel(resultGame, thoughtNumber, this)
         binding.viewmodel = vmResult
         binding.executePendingBindings()
         observe()
     }
+
     private fun observe() {
         vmResult.getEventNavigate().observe(this) { navigate ->
             if (MenuActivity::class.java == navigate) {

@@ -4,7 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testtaskguessnumber.util.Game
+import com.example.testtaskguessnumber.game.GameLogic
 import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.game.`object`.Numbers
 import com.example.testtaskguessnumber.game.ui.GameActivity
@@ -50,7 +50,7 @@ class GameViewModel : ViewModel() {
 
     fun onCheckButtonClick() {
         if (ValidationUtil.checkValidity(number.inputNumber)) {
-            gameScore = Game.play(number)
+            gameScore = GameLogic.play(number)
             terms--
             if (terms > 0 && gameScore == GameScore.LOSE) {
                 eventNavigate.value = GameActivity::class.java
