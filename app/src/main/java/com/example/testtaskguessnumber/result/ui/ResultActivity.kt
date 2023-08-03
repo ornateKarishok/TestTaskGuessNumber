@@ -2,14 +2,13 @@ package com.example.testtaskguessnumber.result.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
 import com.example.testtaskguessnumber.databinding.ActivityResultBinding
 import com.example.testtaskguessnumber.game.`object`.GameScore
+import com.example.testtaskguessnumber.game.ui.GameActivity
 import com.example.testtaskguessnumber.result.viewmodel.ResultViewModel
-import com.example.testtaskguessnumber.util.ValidationUtil
 
 class ResultActivity : AppCompatActivity() {
     val INTENT_KEY = "Game result"
@@ -28,11 +27,13 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun observe() {
+        vmResult.getEventNavigate().observe(this) { navigate ->
+            if (GameActivity::class.java == navigate) {
+                val nextActivity = Intent(this, navigate)
+                startActivity(nextActivity)
 
-                    Toast.makeText(
-                        this,
-                        resources.getString(R.string.not_valid_input),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                finish()
+            }
+        }
     }
 }

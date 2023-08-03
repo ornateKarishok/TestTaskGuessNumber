@@ -2,12 +2,17 @@ package com.example.testtaskguessnumber.result.viewmodel
 
 import android.content.Context
 import androidx.databinding.ObservableField
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.testtaskguessnumber.game.`object`.GameScore
+import com.example.testtaskguessnumber.game.ui.GameActivity
+import com.example.testtaskguessnumber.menu.ui.MenuActivity
 import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
 class ResultViewModel(private val gameScore: GameScore?, context: Context) : ViewModel() {
 
+    private var eventNavigate = MutableLiveData<Class<*>>()
     private val sharedPreferencesUtil = SharedPreferencesUtil(context)
     private var wonGameScore = sharedPreferencesUtil.getWonValue()
     private var lostGameScore = sharedPreferencesUtil.getLoseValue()
@@ -16,7 +21,6 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
         object : ObservableField<String>(wonGameScore.toString()) {
             override fun set(value: String?) {
                 super.set(value)
-                wonGameScore = value?.toIntOrNull() ?: wonGameScore
             }
         }
     private var dataBindingLostGameScore =
@@ -24,11 +28,11 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
         object : ObservableField<String>(lostGameScore.toString()) {
             override fun set(value: String?) {
                 super.set(value)
-                lostGameScore = value?.toIntOrNull() ?: lostGameScore
             }
         }
 
     fun onButtonClick() {
+        eventNavigate.value = MenuActivity::class.java
     }
 
     fun getGameScore(): GameScore? {
@@ -41,5 +45,8 @@ class ResultViewModel(private val gameScore: GameScore?, context: Context) : Vie
 
     fun getWonGameScore(): ObservableField<String> {
         return dataBindingWonGameScore
+    }
+    fun getEventNavigate(): LiveData<Class<*>?> {
+        return eventNavigate
     }
 }
