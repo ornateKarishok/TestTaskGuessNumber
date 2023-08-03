@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
 import com.example.testtaskguessnumber.databinding.ActivityGameBinding
+import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.game.viewmodel.GameViewModel
 import com.example.testtaskguessnumber.result.ui.ResultActivity
+import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
 class GameActivity : AppCompatActivity() {
-    val INTENT_KEY = "Game result"
+    private val INTENT_KEY = "Game result"
     private lateinit var binding: ActivityGameBinding
     private var vmGame: GameViewModel = GameViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +30,7 @@ class GameActivity : AppCompatActivity() {
     private fun observe() {
         vmGame.getEventNavigate().observe(this) { navigate ->
             if (ResultActivity::class.java == navigate) {
+                saveGameScore()
                 val nextActivity = Intent(this, navigate)
                 nextActivity.putExtra(INTENT_KEY, vmGame.getGameScore())
                 startActivity(nextActivity)
@@ -46,6 +49,15 @@ class GameActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+        }
+    }
+
+    private fun saveGameScore() {
+        val sharedPreferences = SharedPreferencesUtil(this)
+        if (vmGame.getGameScore() == GameScore.WIN) {
+            sharedPreferences.increaseWonValue()
+        } else if (vmGame.getGameScore() == GameScore.LOOSE) {
+            sharedPreferences.increaseLoseValue()
         }
     }
 }

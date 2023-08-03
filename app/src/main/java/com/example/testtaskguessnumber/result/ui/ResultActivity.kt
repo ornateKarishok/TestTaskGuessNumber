@@ -22,7 +22,7 @@ class ResultActivity : AppCompatActivity() {
 
         val resultGame: GameScore? = intent.getSerializableExtra(INTENT_KEY) as GameScore?
         binding = DataBindingUtil.setContentView(this, R.layout.activity_result)
-        binding.viewmodel = ResultViewModel(resultGame)
+        binding.viewmodel = ResultViewModel(resultGame, this)
         binding.executePendingBindings()
         observe()
     }

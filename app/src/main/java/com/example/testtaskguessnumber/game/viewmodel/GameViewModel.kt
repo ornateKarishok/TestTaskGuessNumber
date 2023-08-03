@@ -9,7 +9,9 @@ import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.game.`object`.Numbers
 import com.example.testtaskguessnumber.game.ui.GameActivity
 import com.example.testtaskguessnumber.result.ui.ResultActivity
+import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 import com.example.testtaskguessnumber.util.ValidationUtil
+import java.security.AccessController.getContext
 
 class GameViewModel : ViewModel() {
     private val number: Numbers = generateNumber()
@@ -50,6 +52,7 @@ class GameViewModel : ViewModel() {
             terms--
             if (terms > 0 && gameScore == GameScore.LOOSE) {
                 eventNavigate.value = GameActivity::class.java
+
             } else {
                 eventNavigate.value = ResultActivity::class.java
             }

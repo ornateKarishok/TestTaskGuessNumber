@@ -14,6 +14,7 @@
             type="com.example.testtaskguessnumber.game.object.GameScore" />
 
         <import type="android.view.View" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,6 +73,7 @@
             android:id="@+id/number_of_guessed_numbers"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
+            android:text="@={viewmodel.wonGameScore}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/number_of_guessed_numbers_title"
             app:layout_constraintLeft_toRightOf="@+id/number_of_guessed_numbers_title"
@@ -94,6 +96,7 @@
             android:id="@+id/number_of_unguessed_numbers"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
+            android:text="@={viewmodel.lostGameScore}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/number_of_unguessed_numbers_title"
             app:layout_constraintLeft_toRightOf="@+id/number_of_unguessed_numbers_title"
