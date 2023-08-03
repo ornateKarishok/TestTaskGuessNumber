@@ -15,6 +15,6 @@
     <string name="game_results">Результати гри</string>
     <string name="incorrect">Не вгадали! Залишилось спроб:&#160;</string>
     <string name="you_won">Ви перемогли!</string>
-    <string name="you_lost">You lost :(</string>
+    <string name="you_lose">You lose :(</string>
     <string name="the_hidden_number_was">Загадане число було:&#160;</string>
 </resources>

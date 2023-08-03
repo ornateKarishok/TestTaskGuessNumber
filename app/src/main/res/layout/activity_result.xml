@@ -33,30 +33,30 @@
             android:textColor="@color/green"
             android:textSize="@dimen/text_size_30"
             android:visibility="@{viewmodel.gameScore == gameScoreEnum.WON ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/number_of_guessed_numbers_title"
+            app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/game_result_lost"
+            android:id="@+id/game_result_lose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_15"
             android:layout_marginTop="@dimen/margin_15"
             android:layout_marginEnd="@dimen/margin_5"
             android:gravity="center"
-            android:text="@string/you_lost"
+            android:text="@string/you_lose"
             android:textColor="@color/red"
             android:textSize="@dimen/text_size_30"
             android:visibility="@{viewmodel.gameScore == gameScoreEnum.LOSE ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/number_of_guessed_numbers_title"
+            app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/number_of_guessed_numbers_title"
+            android:id="@+id/number_of_thought_numbers_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_15"
@@ -75,10 +75,10 @@
             android:layout_height="wrap_content"
             android:text="@={viewmodel.wonGameScore}"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/number_of_guessed_numbers_title"
-            app:layout_constraintLeft_toRightOf="@+id/number_of_guessed_numbers_title"
+            app:layout_constraintBottom_toBottomOf="@+id/number_of_thought_numbers_title"
+            app:layout_constraintLeft_toRightOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/number_of_guessed_numbers_title" />
+            app:layout_constraintTop_toTopOf="@+id/number_of_thought_numbers_title" />
 
         <TextView
             android:id="@+id/number_of_unguessed_numbers_title"
@@ -88,15 +88,15 @@
             android:text="@string/number_of_unguessed_numbers_title"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/thought_number"
-            app:layout_constraintLeft_toLeftOf="@+id/number_of_guessed_numbers_title"
+            app:layout_constraintLeft_toLeftOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintRight_toLeftOf="@+id/number_of_unguessed_numbers"
-            app:layout_constraintTop_toBottomOf="@+id/number_of_guessed_numbers_title" />
+            app:layout_constraintTop_toBottomOf="@+id/number_of_thought_numbers_title" />
 
         <TextView
             android:id="@+id/number_of_unguessed_numbers"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:text="@={viewmodel.lostGameScore}"
+            android:text="@={viewmodel.loseGameScore}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/number_of_unguessed_numbers_title"
             app:layout_constraintLeft_toRightOf="@+id/number_of_unguessed_numbers_title"
@@ -111,7 +111,7 @@
             android:layout_marginEnd="@dimen/margin_5"
             android:text="@string/the_hidden_number_was"
             android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="@+id/number_of_guessed_numbers_title"
+            app:layout_constraintLeft_toLeftOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintRight_toLeftOf="@+id/thought_number"
             app:layout_constraintTop_toBottomOf="@+id/number_of_unguessed_numbers_title" />
 

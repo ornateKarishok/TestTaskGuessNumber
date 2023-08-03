@@ -9,13 +9,17 @@ import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.menu.ui.MenuActivity
 import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
-class ResultViewModel(private val gameScore: GameScore?, private val guessedNumber: Int, context: Context) :
+class ResultViewModel(
+    private val gameScore: GameScore?,
+    private val thoughtNumber: Int,
+    context: Context
+) :
     ViewModel() {
 
     private var eventNavigate = MutableLiveData<Class<*>>()
     private val sharedPreferencesUtil = SharedPreferencesUtil(context)
     private var wonGameScore = sharedPreferencesUtil.getWonValue()
-    private var lostGameScore = sharedPreferencesUtil.getLoseValue()
+    private var loseGameScore = sharedPreferencesUtil.getLoseValue()
     private var dataBindingWonGameScore =
 
         object : ObservableField<String>(wonGameScore.toString()) {
@@ -23,16 +27,16 @@ class ResultViewModel(private val gameScore: GameScore?, private val guessedNumb
                 super.set(value)
             }
         }
-    private var dataBindingLostGameScore =
+    private var dataBindingLoseGameScore =
 
-        object : ObservableField<String>(lostGameScore.toString()) {
+        object : ObservableField<String>(loseGameScore.toString()) {
             override fun set(value: String?) {
                 super.set(value)
             }
         }
     private var dataBindingThoughtNumber =
 
-        object : ObservableField<String>(guessedNumber.toString()) {
+        object : ObservableField<String>(thoughtNumber.toString()) {
             override fun set(value: String?) {
                 super.set(value)
             }
@@ -45,12 +49,13 @@ class ResultViewModel(private val gameScore: GameScore?, private val guessedNumb
     fun getGameScore(): GameScore? {
         return gameScore
     }
+
     fun getDataBindingThoughtNumber(): ObservableField<String> {
         return dataBindingThoughtNumber
     }
 
-    fun getLostGameScore(): ObservableField<String> {
-        return dataBindingLostGameScore
+    fun getLoseGameScore(): ObservableField<String> {
+        return dataBindingLoseGameScore
     }
 
     fun getWonGameScore(): ObservableField<String> {
