@@ -9,7 +9,6 @@ import com.example.testtaskguessnumber.R
 import com.example.testtaskguessnumber.databinding.ActivityGameBinding
 import com.example.testtaskguessnumber.game.viewmodel.GameViewModel
 import com.example.testtaskguessnumber.result.ui.ResultActivity
-import com.example.testtaskguessnumber.util.ValidationUtil
 
 class GameActivity : AppCompatActivity() {
     val INTENT_KEY = "Game result"
@@ -29,24 +28,21 @@ class GameActivity : AppCompatActivity() {
     private fun observe() {
         vmGame.getEventNavigate().observe(this) { navigate ->
             if (ResultActivity::class.java == navigate) {
-                if (ValidationUtil.checkValidity(vmGame.getNumber().inputNumber)) {
-                    val nextActivity = Intent(this, navigate)
-                    nextActivity.putExtra(INTENT_KEY, vmGame.getGameScore())
-                    startActivity(nextActivity)
+                val nextActivity = Intent(this, navigate)
+                nextActivity.putExtra(INTENT_KEY, vmGame.getGameScore())
+                startActivity(nextActivity)
 
-                    finish()
-                } else {
-                    Toast.makeText(
-                        this,
-                        resources.getString(R.string.not_valid_input),
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-            } else {
+                finish()
+            } else if (GameActivity::class.java == navigate) {
                 Toast.makeText(
                     this,
                     resources.getString(R.string.incorrect) + (vmGame.getTerms()),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    resources.getString(R.string.not_valid_input),
                     Toast.LENGTH_SHORT
                 ).show()
             }
