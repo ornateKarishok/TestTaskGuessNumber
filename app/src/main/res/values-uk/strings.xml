@@ -13,7 +13,7 @@
     <string name="menu">Меню</string>
     <string name="simple_game">Проста гра</string>
     <string name="game_results">Результати гри</string>
-    <string name="incorrect">Не вгадали! Залишилось спроб: </string>
+    <string name="incorrect">Не вгадали! Залишилось спроб:&#160;</string>
     <string name="you_won">Ви перемогли!</string>
     <string name="you_lost">You lost :(</string>
 </resources>

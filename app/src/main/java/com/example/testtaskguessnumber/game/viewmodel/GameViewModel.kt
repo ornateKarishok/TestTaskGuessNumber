@@ -12,7 +12,7 @@ import com.example.testtaskguessnumber.result.ui.ResultActivity
 class GameViewModel : ViewModel() {
     private val number: Numbers = generateNumber()
 
-    private var terms: Int = 0
+    private var terms: Int = 3
 
     private val eventNavigate = MutableLiveData<Class<*>>()
     private var gameScore: GameScore = GameScore.LOOSE
@@ -47,15 +47,13 @@ class GameViewModel : ViewModel() {
 
     fun onCheckButtonClick() {
         gameScore = Game.play(number)
-        if (terms < 3 && gameScore == GameScore.LOOSE) {
-            terms++
+        terms--
+        if (terms > 0 && gameScore == GameScore.LOOSE) {
             eventNavigate.value = null
         } else {
             eventNavigate.value = ResultActivity::class.java
         }
     }
-
-
     private fun generateNumber(): Numbers {
         return Numbers((0..100).random())
     }

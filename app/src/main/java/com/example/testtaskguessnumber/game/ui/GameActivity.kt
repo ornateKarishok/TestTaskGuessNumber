@@ -46,7 +46,7 @@ class GameActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(
                     this,
-                    resources.getString(R.string.incorrect) + (3 - vmGame.getTerms()),
+                    resources.getString(R.string.incorrect) + (vmGame.getTerms()),
                     Toast.LENGTH_SHORT
                 ).show()
             }

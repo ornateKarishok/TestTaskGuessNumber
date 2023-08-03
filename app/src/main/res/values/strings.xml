@@ -12,7 +12,7 @@
     <string name="menu">Menu</string>
     <string name="simple_game">Simple game</string>
     <string name="game_results">Game results</string>
-    <string name="incorrect">Didn\'t guess! Remaining attempts: </string>
+    <string name="incorrect">Didn\'t guess! Remaining attempts:&#160;</string>
     <string name="you_won">You won!</string>
     <string name="you_lost">You lost :(</string>
 </resources>
