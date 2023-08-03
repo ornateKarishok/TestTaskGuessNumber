@@ -4,7 +4,7 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.testtaskguessnumber.game.Game
+import com.example.testtaskguessnumber.util.Game
 import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.game.`object`.Numbers
 import com.example.testtaskguessnumber.game.ui.GameActivity

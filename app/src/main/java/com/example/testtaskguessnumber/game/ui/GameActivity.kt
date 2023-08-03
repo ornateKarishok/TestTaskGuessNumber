@@ -56,7 +56,7 @@ class GameActivity : AppCompatActivity() {
 
     private fun saveGameScore() {
         val sharedPreferences = SharedPreferencesUtil(this)
-        if (vmGame.getGameScore() == GameScore.WIN) {
+        if (vmGame.getGameScore() == GameScore.WON) {
             sharedPreferences.increaseWonValue()
         } else if (vmGame.getGameScore() == GameScore.LOSE) {
             sharedPreferences.increaseLoseValue()
