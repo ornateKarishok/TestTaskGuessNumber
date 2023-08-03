@@ -9,9 +9,7 @@ import com.example.testtaskguessnumber.game.`object`.GameScore
 import com.example.testtaskguessnumber.game.`object`.Numbers
 import com.example.testtaskguessnumber.game.ui.GameActivity
 import com.example.testtaskguessnumber.result.ui.ResultActivity
-import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 import com.example.testtaskguessnumber.util.ValidationUtil
-import java.security.AccessController.getContext
 
 class GameViewModel : ViewModel() {
     private val number: Numbers = generateNumber()
@@ -19,7 +17,7 @@ class GameViewModel : ViewModel() {
     private var terms: Int = 3
 
     private val eventNavigate = MutableLiveData<Class<*>>()
-    private var gameScore: GameScore = GameScore.LOOSE
+    private var gameScore: GameScore = GameScore.LOSE
 
     private var dataBindingNumber =
 
@@ -41,6 +39,7 @@ class GameViewModel : ViewModel() {
     fun getTerms(): Int {
         return terms
     }
+
     fun getNumbers(): Numbers {
         return number
     }
@@ -53,7 +52,7 @@ class GameViewModel : ViewModel() {
         if (ValidationUtil.checkValidity(number.inputNumber)) {
             gameScore = Game.play(number)
             terms--
-            if (terms > 0 && gameScore == GameScore.LOOSE) {
+            if (terms > 0 && gameScore == GameScore.LOSE) {
                 eventNavigate.value = GameActivity::class.java
 
             } else {

@@ -9,7 +9,7 @@ class Game {
             return if (number.inputNumber == number.thoughtNumber) {
                 GameScore.WIN
             } else {
-                GameScore.LOOSE
+                GameScore.LOSE
             }
         }
     }
