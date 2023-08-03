@@ -13,8 +13,8 @@ import com.example.testtaskguessnumber.result.ui.ResultActivity
 import com.example.testtaskguessnumber.util.SharedPreferencesUtil
 
 class GameActivity : AppCompatActivity() {
-    private val intentKeyGameResult = "Game result"
-    private val intentKeyThoughtNumber = "Thought number"
+    private val intentKeyGameResult = "GAME_RESULT"
+    private val intentKeyThoughtNumber = "THOUGHT_NUMBER"
     private lateinit var binding: ActivityGameBinding
     private var vmGame: GameViewModel = GameViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {

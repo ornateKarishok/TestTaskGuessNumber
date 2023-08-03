@@ -12,8 +12,8 @@ import com.example.testtaskguessnumber.result.viewmodel.ResultViewModel
 import com.example.testtaskguessnumber.util.SerializableUtil.Factory.getSerializable
 
 class ResultActivity : AppCompatActivity() {
-    private val intentKeyGameResult = "Game result"
-    private val intentKeyThoughtNumber = "Thought number"
+    private val intentKeyGameResult = "GAME_RESULT"
+    private val intentKeyThoughtNumber = "THOUGHT_NUMBER"
     private lateinit var binding: ActivityResultBinding
     private lateinit var vmResult: ResultViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
