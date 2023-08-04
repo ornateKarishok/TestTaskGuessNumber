@@ -2,7 +2,6 @@ package com.example.testtaskguessnumber.game.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
@@ -16,13 +15,14 @@ class GameActivity : AppCompatActivity() {
     private val intentKeyGameResult = "GAME_RESULT"
     private val intentKeyThoughtNumber = "THOUGHT_NUMBER"
     private lateinit var binding: ActivityGameBinding
-    private var vmGame: GameViewModel = GameViewModel()
+    private lateinit var vmGame: GameViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = resources.getString(R.string.simple_game)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game)
+        vmGame = GameViewModel(application)
         binding.viewmodel = vmGame
         binding.executePendingBindings()
         observe()
@@ -38,18 +38,6 @@ class GameActivity : AppCompatActivity() {
                 startActivity(nextActivity)
 
                 finish()
-            } else if (GameActivity::class.java == navigate) {
-                Toast.makeText(
-                    this,
-                    resources.getString(R.string.incorrect) + (vmGame.getTerms()),
-                    Toast.LENGTH_SHORT
-                ).show()
-            } else {
-                Toast.makeText(
-                    this,
-                    resources.getString(R.string.not_valid_input),
-                    Toast.LENGTH_SHORT
-                ).show()
             }
         }
     }

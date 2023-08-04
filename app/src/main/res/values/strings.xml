@@ -3,8 +3,8 @@
     <string name="start_game">Start game</string>
     <string name="exit_the_application">Exit the application</string>
     <string name="check">Check</string>
-    <string name="number_of_guessed_numbers_title">The quantity of guessed numbers</string>
-    <string name="number_of_unguessed_numbers_title">Quantity of unguessed numbers</string>
+    <string name="number_of_guessed_numbers_title">The quantity of guessed numbers: </string>
+    <string name="number_of_unguessed_numbers_title">Quantity of unguessed numbers: </string>
     <string name="go_to_main_menu">Go to main menu</string>
     <string name="please_click_exit_again">Please click button again to exit</string>
     <string name="game_rules">Please guess the number from 1 to 100</string>
