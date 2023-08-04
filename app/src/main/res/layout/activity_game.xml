@@ -26,10 +26,32 @@
             android:text="@string/game_rules"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_20"
-            app:layout_constraintBottom_toTopOf="@+id/game_info"
+            app:layout_constraintBottom_toTopOf="@+id/number_edit_text"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/number_edit_text"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_45"
+            android:background="@drawable/rounded_edittext"
+            android:digits="0123456789"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="@dimen/padding_10"
+            android:singleLine="true"
+            android:text="@={viewmodel.dataBindingNumber}"
+            android:textSize="@dimen/text_size_15"
+            android:windowSoftInputMode="stateVisible"
+            app:layout_constraintBottom_toTopOf="@+id/game_info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_rules"
+            app:requestFocus="@{viewmodel.focus}" />
+
 
         <TextView
             android:id="@+id/game_info"
@@ -38,43 +60,34 @@
             android:text="@={viewmodel.gameScoreText}"
             android:textColor="@color/red"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/number_edit_text"
+            app:layout_constraintBottom_toTopOf="@+id/middle_gl"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_rules" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/number_edit_text"
-            android:layout_width="@dimen/size_0"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_45"
-            android:digits="0123456789"
-            android:inputType="number"
-            android:maxLength="3"
-            android:singleLine="true"
-            android:gravity="center"
-            android:padding="@dimen/padding_10"
-            android:background="@drawable/rounded_edittext"
-            android:text="@={viewmodel.dataBindingNumber}"
-            android:textSize="@dimen/text_size_15"
-            app:layout_constraintBottom_toTopOf="@+id/check_button"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/game_info" />
+            app:layout_constraintTop_toBottomOf="@+id/number_edit_text" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/check_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewmodel.onCheckButtonClick()}"
-            android:text="@string/check"
+            android:layout_marginTop="@dimen/margin_20"
             android:background="@drawable/button_sample"
+            android:onClick="@{() -> viewmodel.onCheckButtonClick()}"
+            android:paddingHorizontal="@dimen/padding_50"
+            android:text="@string/check"
             android:textColor="@color/white"
-            android:paddingHorizontal="@dimen/padding_35"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:textSize="@dimen/text_size_15"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number_edit_text" />
+            app:layout_constraintTop_toBottomOf="@+id/middle_gl" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/middle_gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.50" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

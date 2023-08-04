@@ -52,21 +52,20 @@
             android:layout_marginEnd="@dimen/margin_5"
             android:text="@string/the_hidden_number_was"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15"
+            android:textSize="@dimen/text_size_20"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/thought_number"
             app:layout_constraintTop_toBottomOf="@+id/game_result_won" />
 
-
         <TextView
             android:id="@+id/thought_number"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:text="@={viewmodel.getDataBindingThoughtNumber}"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_15"
+            android:textColor="@color/green"
+            android:textSize="@dimen/text_size_20"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/thought_number_title"
             app:layout_constraintLeft_toRightOf="@+id/thought_number_title"

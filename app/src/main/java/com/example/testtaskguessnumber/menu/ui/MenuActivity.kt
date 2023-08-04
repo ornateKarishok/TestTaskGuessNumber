@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
@@ -19,12 +20,18 @@ class MenuActivity : AppCompatActivity() {
     private var vmMenu: MenuViewModel = MenuViewModel()
     private var isExitPressedOnce = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = resources.getString(R.string.menu)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_menu)
+
+        onBackPressedDispatcher.addCallback(
+            this,
+            backPressedCallback
+        )
         binding.viewmodel = vmMenu
         binding.executePendingBindings()
         observe()
@@ -39,23 +46,34 @@ class MenuActivity : AppCompatActivity() {
                 finish()
 
             } else if (MenuActivity::class.java == navigate) {
-                if (isExitPressedOnce) {
-                    finishAffinity()
-                    exitProcess(1)
-                }
-
-                this.isExitPressedOnce = true
-                Toast.makeText(
-                    this,
-                    resources.getString(R.string.please_click_exit_again),
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                Handler(Looper.getMainLooper()).postDelayed({
-                    isExitPressedOnce = false
-                }, 2000)
+                closeApp()
             }
         }
     }
+
+    private fun closeApp() {
+        if (isExitPressedOnce) {
+            finishAffinity()
+            exitProcess(1)
+        }
+
+        this.isExitPressedOnce = true
+        Toast.makeText(
+            this,
+            resources.getString(R.string.please_click_exit_again),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            isExitPressedOnce = false
+        }, 2000)
+    }
+
+    private val backPressedCallback = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            closeApp()
+        }
+    }
 }
+
 

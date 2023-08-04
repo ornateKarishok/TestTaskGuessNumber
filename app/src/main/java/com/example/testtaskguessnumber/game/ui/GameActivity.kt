@@ -2,6 +2,7 @@ package com.example.testtaskguessnumber.game.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.testtaskguessnumber.R
@@ -20,7 +21,7 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         supportActionBar?.title = resources.getString(R.string.simple_game)
-
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_game)
         vmGame = GameViewModel(application)
         binding.viewmodel = vmGame

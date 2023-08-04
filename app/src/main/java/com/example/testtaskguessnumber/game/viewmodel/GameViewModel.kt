@@ -17,6 +17,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     private var terms: Int = 3
 
+    private val focus = true
+
     private val eventNavigate = MutableLiveData<Class<*>>()
     private var gameScore: GameScore = GameScore.LOSE
 
@@ -40,6 +42,10 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         return eventNavigate
     }
 
+    fun getFocus(): Boolean {
+        return focus
+    }
+
     fun getDataBindingNumber(): ObservableField<String> {
         return dataBindingNumber
     }
@@ -61,6 +67,8 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             gameScore = GameLogic.play(number)
             terms--
             if (terms > 0 && gameScore == GameScore.LOSE) {
+                dataBindingNumber.set("")
+                number.inputNumber = -1
                 infoGameText.set(getResourcesStringById(R.string.incorrect) + terms)
             } else {
                 eventNavigate.value = ResultActivity::class.java
