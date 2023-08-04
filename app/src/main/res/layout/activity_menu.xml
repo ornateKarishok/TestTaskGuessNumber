@@ -13,27 +13,39 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:scaleType="fitCenter" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/start_game_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/start_game"
+            android:background="@drawable/button_sample"
             android:onClick="@{() -> viewmodel.onStartGameButtonClick()}"
+            android:paddingHorizontal="@dimen/padding_35"
+            android:text="@string/start_game"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/exit"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/exit_the_application"
+            android:background="@drawable/button_sample"
             android:onClick="@{() -> viewmodel.onFinishGameButtonClick()}"
+            android:paddingHorizontal="@dimen/padding_35"
+            android:text="@string/exit_the_application"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/start_game_button"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/start_game_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
