@@ -8,7 +8,6 @@
             name="viewmodel"
             type="com.example.testtaskguessnumber.result.viewmodel.ResultViewModel" />
 
-
         <variable
             name="gameScoreEnum"
             type="com.example.testtaskguessnumber.game.object.GameScore" />
@@ -21,60 +20,80 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background"
+            android:scaleType="fitCenter" />
+
         <TextView
             android:id="@+id/game_result_won"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_35"
             android:layout_marginEnd="@dimen/margin_5"
             android:gravity="center"
-            android:text="@string/you_won"
-            android:textColor="@color/green"
+            android:text="@{viewmodel.gameScore == gameScoreEnum.WON ? @string/you_won : @string/you_lose}"
+            android:textColor="@{viewmodel.gameScore == gameScoreEnum.WON ? @color/green: @color/red}"
             android:textSize="@dimen/text_size_30"
-            android:visibility="@{viewmodel.gameScore == gameScoreEnum.WON ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/thought_number_title"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/game_result_lose"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_15"
-            android:layout_marginEnd="@dimen/margin_5"
-            android:gravity="center"
-            android:text="@string/you_lose"
-            android:textColor="@color/red"
-            android:textSize="@dimen/text_size_30"
-            android:visibility="@{viewmodel.gameScore == gameScoreEnum.LOSE ? View.VISIBLE : View.GONE}"
-            app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/number_of_thought_numbers_title"
+            android:id="@+id/thought_number_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_15"
             android:layout_marginTop="@dimen/margin_35"
             android:layout_marginEnd="@dimen/margin_5"
-            android:text="@string/number_of_guessed_numbers_title"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/number_of_unguessed_numbers_title"
+            android:text="@string/the_hidden_number_was"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/number_of_guessed_numbers"
+            app:layout_constraintRight_toLeftOf="@+id/thought_number"
             app:layout_constraintTop_toBottomOf="@+id/game_result_won" />
+
+
+        <TextView
+            android:id="@+id/thought_number"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:text="@={viewmodel.getDataBindingThoughtNumber}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/thought_number_title"
+            app:layout_constraintLeft_toRightOf="@+id/thought_number_title"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/thought_number_title" />
+
+        <TextView
+            android:id="@+id/number_of_thought_numbers_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_35"
+            android:layout_marginEnd="@dimen/margin_5"
+            android:text="@string/number_of_guessed_numbers_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
+            app:layout_constraintBottom_toTopOf="@+id/number_of_unguessed_numbers_title"
+            app:layout_constraintLeft_toLeftOf="@+id/thought_number_title"
+            app:layout_constraintRight_toLeftOf="@+id/number_of_guessed_numbers"
+            app:layout_constraintTop_toBottomOf="@+id/thought_number_title" />
 
         <TextView
             android:id="@+id/number_of_guessed_numbers"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:text="@={viewmodel.wonGameScore}"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
             app:layout_constraintBottom_toBottomOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintLeft_toRightOf="@+id/number_of_thought_numbers_title"
             app:layout_constraintRight_toRightOf="parent"
@@ -84,11 +103,12 @@
             android:id="@+id/number_of_unguessed_numbers_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_15"
             android:layout_marginEnd="@dimen/margin_5"
             android:text="@string/number_of_unguessed_numbers_title"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/thought_number"
-            app:layout_constraintLeft_toLeftOf="@+id/number_of_thought_numbers_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
+            app:layout_constraintLeft_toLeftOf="@+id/thought_number_title"
             app:layout_constraintRight_toLeftOf="@+id/number_of_unguessed_numbers"
             app:layout_constraintTop_toBottomOf="@+id/number_of_thought_numbers_title" />
 
@@ -97,42 +117,24 @@
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:text="@={viewmodel.loseGameScore}"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_15"
             app:layout_constraintBottom_toBottomOf="@+id/number_of_unguessed_numbers_title"
             app:layout_constraintLeft_toRightOf="@+id/number_of_unguessed_numbers_title"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@+id/number_of_unguessed_numbers_title" />
 
-        <TextView
-            android:id="@+id/thought_number_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_15"
-            android:layout_marginEnd="@dimen/margin_5"
-            android:text="@string/the_hidden_number_was"
-            android:textColor="@color/black"
-            app:layout_constraintLeft_toLeftOf="@+id/number_of_thought_numbers_title"
-            app:layout_constraintRight_toLeftOf="@+id/thought_number"
-            app:layout_constraintTop_toBottomOf="@+id/number_of_unguessed_numbers_title" />
-
-        <TextView
-            android:id="@+id/thought_number"
-            android:layout_width="@dimen/size_0"
-            android:layout_height="wrap_content"
-            android:text="@={viewmodel.getDataBindingThoughtNumber}"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/thought_number_title"
-            app:layout_constraintLeft_toRightOf="@+id/thought_number_title"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/thought_number_title" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/main_menu_button"
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_35"
+            android:background="@drawable/button_sample"
             android:onClick="@{() -> viewmodel.onButtonClick()}"
+            android:paddingHorizontal="@dimen/padding_35"
             android:text="@string/go_to_main_menu"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
